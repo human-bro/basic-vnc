@@ -49,3 +49,32 @@ vncserver -kill :1
 ```
 Or 
 
+> Now is a very important step is to accept incoming connections
+>
+> Different cloud services have different ways to setup so that the machine can accept conection from outiside like a different ip.
+>
+> The basic idea is to create a network rule where tcp protocal is accepted and tcp 5900 port should be accepted.
+>
+> In google cloud you have to click on `vpc` in menu after that go to `firewall` click on create a `new firewall rule` now in this rule keep everything same and then in the specified tags type `tcp` then add `Source IPv4 ranges` as `0.0.0.0/0` as you want to access through any ip and then in `Protocols and ports` section tick on `tcp` then in the ports type `5901` the click on create rule
+>
+> This will make sure that vncviewer can connect through any ip or device with a vnc viewer application
+>
+> Now to lauch the vnc server
+>
+```
+vncserver :1 -localhost no
+```
+> Now to set it up for different resolutions so that it fits for different devices
+>
+> This fits perfectly for landscape mobile 
+```vncserver :1 -geometry 1340x720 -localhost no
+```
+>
+> Other resolutions
+>
+> 640x480
+> 1440x720
+> 480x320 # Very small screens
+> To just change the resolution just alter the -geometry `resolution`
+>
+>
